@@ -1,0 +1,45 @@
+{
+  "mallName": "Mall Two",
+  "floors": [
+    {
+      "name": "G",
+      "parkingBays": [
+        { "name": "Bay 1", "occupied": false, "device_id": null },
+        { "name": "Bay 2", "occupied": false, "device_id": null },
+        { "name": "Bay 3", "occupied": false, "device_id": null },
+        { "name": "Bay 4", "occupied": false, "device_id": null },
+        { "name": "Bay 5", "occupied": false, "device_id": null }
+      ]
+    },
+    {
+      "name": "L1",
+      "parkingBays": [
+        { "name": "Bay 1", "occupied": false, "device_id": null },
+        { "name": "Bay 2", "occupied": false, "device_id": null },
+        { "name": "Bay 3", "occupied": false, "device_id": null },
+        { "name": "Bay 4", "occupied": false, "device_id": null },
+        { "name": "Bay 5", "occupied": false, "device_id": null }
+      ]
+    },
+    {
+      "name": "L2",
+      "parkingBays": [
+        { "name": "Bay 1", "occupied": false, "device_id": null },
+        { "name": "Bay 2", "occupied": false, "device_id": null },
+        { "name": "Bay 3", "occupied": false, "device_id": null },
+        { "name": "Bay 4", "occupied": false, "device_id": null },
+        { "name": "Bay 5", "occupied": false, "device_id": null }
+      ]
+    },
+    {
+      "name": "L3",
+      "parkingBays": [
+        { "name": "Bay 1", "occupied": false, "device_id": null },
+        { "name": "Bay 2", "occupied": false, "device_id": null },
+        { "name": "Bay 3", "occupied": false, "device_id": null },
+        { "name": "Bay 4", "occupied": false, "device_id": null },
+        { "name": "Bay 5", "occupied": false, "device_id": null }
+      ]
+    }
+  ]
+}
