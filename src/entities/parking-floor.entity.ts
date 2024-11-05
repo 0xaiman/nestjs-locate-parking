@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { ParkingOperators } from './parking-operator.entity';
 import { ParkingBay } from './parking-bay.entity';
+import { Device } from './device.entity';
 
 @Entity()
 export class ParkingFloor {
@@ -27,4 +28,7 @@ export class ParkingFloor {
 
   @OneToMany(() => ParkingBay, (parkingBay) => parkingBay.floor)
   parkingBays: ParkingBay[];
+
+  @OneToMany(() => Device, (device) => device.floor)
+  device: Device[];
 }

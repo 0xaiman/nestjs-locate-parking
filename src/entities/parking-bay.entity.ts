@@ -1,6 +1,14 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ParkingOperators } from './parking-operator.entity';
 import { ParkingFloor } from './parking-floor.entity';
+import { ParkingSession } from './parking-session.entity';
+import { Device } from './device.entity';
 
 @Entity()
 export class ParkingBay {
@@ -30,4 +38,10 @@ export class ParkingBay {
     (parkingOperator) => parkingOperator.parkingBays,
   )
   parkingOperator: ParkingOperators;
+
+  @OneToOne(() => ParkingSession, (session) => session.bay)
+  session: ParkingSession; // Ensure this matches with ParkingSession
+
+  @ManyToOne(() => Device, (device) => device.bay)
+  device: Device;
 }
