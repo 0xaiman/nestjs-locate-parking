@@ -22,7 +22,7 @@ export class ParkingBay {
   occupied: boolean;
 
   @Column({ nullable: true })
-  device_id: string;
+  deviceId: string;
 
   @Column()
   createdAt: Date;

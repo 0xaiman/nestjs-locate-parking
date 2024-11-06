@@ -22,20 +22,20 @@ export class ParkingSession {
   bay: ParkingBay; // Ensure this matches with ParkingBay
 
   @Column()
-  event_time: Date;
+  eventTime: Date;
 
   @Column()
-  event_type: string;
+  eventType: string;
 
   @Column()
   duration: number; // seconds
 
   @Column()
-  created_at: Date;
+  createdAt: Date;
 
   @Column()
-  updated_at: Date;
+  updatedAt: Date;
 
   @Column()
-  image_path: string;
+  imagePath: string;
 }

@@ -14,7 +14,7 @@ export class Device {
   id: number;
 
   @Column({ nullable: false })
-  device_name: string;
+  deviceName: string;
 
   @Column({ nullable: false })
   channel: number;
@@ -23,13 +23,13 @@ export class Device {
   location: string;
 
   @Column({ nullable: false })
-  last_hearbeat: Date;
+  lastHeartbeat: Date;
 
   @Column({ nullable: false })
-  created_at: Date;
+  createdAt: Date;
 
   @Column({ nullable: false })
-  updated_at: Date;
+  updatedAt: Date;
 
   //paking bay relationship
   @OneToMany(() => ParkingBay, (bay) => bay.device)

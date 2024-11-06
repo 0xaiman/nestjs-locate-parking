@@ -6,7 +6,7 @@ export class Store {
   id: number;
 
   @Column()
-  store_name: string;
+  storeName: string;
 
   //area_id relationship
 }

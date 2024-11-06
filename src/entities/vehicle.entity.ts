@@ -7,22 +7,22 @@ export class Vehicle {
   id: number;
 
   @Column({ nullable: false })
-  license_plate: string;
+  licensePlate: string;
 
   @Column({ nullable: false })
-  vehicle_type: string;
+  vehicleType: string;
 
   @Column({ nullable: false })
-  vehicle_color: string;
+  vehicleColor: string;
 
   @Column({ nullable: false })
-  vehicle_brand: string;
+  vehicleBrand: string;
 
   @Column({ nullable: false })
-  created_at: Date;
+  createdAt: Date;
 
   @Column({ nullable: false })
-  updated_at: Date;
+  updatedAt: Date;
 
   @OneToOne(() => ParkingSession, (session) => session.vehicle)
   session: ParkingSession;
