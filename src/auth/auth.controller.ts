@@ -17,7 +17,7 @@ export class AuthController {
 
   @Post('login')
   async signInUser(@Req() req, @Res() res: ExpressResponse) {
-    await this.authService.signIn(req.body, res);
-    res.status(HttpStatus.OK).send();
+    const { encodedUser } = await this.authService.signIn(req.body, res);
+    res.status(HttpStatus.OK).send({ encodedUser });
   }
 }

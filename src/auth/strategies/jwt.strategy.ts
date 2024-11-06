@@ -14,10 +14,12 @@ export class JwtStrategy extends PassportStrategy(
       jwtFromRequest: ExtractJwt.fromExtractors([
         (req) => {
           // bearer token strategy
-          // if (req?.headers?.authorization) {
-          //   // console.log(req.headers.authorization.replace('Bearer ', ''));
-          //   return req.headers.authorization.replace('Bearer ', '');
-          // }
+          if (req?.headers?.authorization) {
+            // const token = req.headers['authorization']?.split(' ')[1];
+            // console.log('JWT Token:', token);
+            console.log(req.headers.authorization.replace('Bearer ', ''));
+            return req.headers.authorization.replace('Bearer ', '');
+          }
           // return null;
           return req?.cookies?.[COOKIE_NAMES.JWT] || null;
         }, // extract the cookies from the request
