@@ -25,10 +25,18 @@ import { AuthModule } from './auth/auth.module';
 import { User } from './entities/user.entity';
 import { UserAuth } from './entities/user-auth.entity';
 import { UserModule } from './user/user.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
     ConfigModule.forRoot({}),
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60000, // 60 seconds,  time-to-live in mili seconds
+        limit: 5, // max requests within TTL per client
+      },
+    ]),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
@@ -60,7 +68,13 @@ import { UserModule } from './user/user.module';
   ],
   exports: [SeederService],
   controllers: [],
-  providers: [SeederService],
+  providers: [
+    SeederService,
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
