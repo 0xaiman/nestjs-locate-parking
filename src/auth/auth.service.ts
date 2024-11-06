@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { RegisterPayloadDto } from './dto/register.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
@@ -7,11 +11,7 @@ import { UserAuth } from 'src/entities/user-auth.entity';
 import * as CryptoJS from 'crypto-js';
 import { JwtService } from '@nestjs/jwt';
 import { CookieOptions, Response } from 'express';
-import {
-  COOKIE_NAMES,
-  expiresInHalfDay,
-  expiresInOneDay,
-} from './constants/auth.constants';
+import { COOKIE_NAMES, expiresInOneDay } from './constants/auth.constants';
 
 @Injectable()
 export class AuthService {
@@ -65,6 +65,45 @@ export class AuthService {
     return { encodedUser };
   }
 
+  async signIn(
+    payload: any,
+    res: Response,
+  ): Promise<{
+    encodedUser: string;
+  }> {
+    const user = await this.userRepository.findOne({
+      where: {
+        email: payload.email,
+      },
+      relations: {
+        password: true,
+      },
+    });
+
+    if (!user.password) throw new BadRequestException('Invalid Password');
+
+    const hashedPassword = CryptoJS.AES.decrypt(
+      user.password.password,
+      process.env.JWT_SECRET,
+    );
+
+    const originalPassword = hashedPassword.toString(CryptoJS.enc.Utf8);
+    console.log(originalPassword);
+
+    if (payload.password !== originalPassword)
+      throw new BadRequestException('Wrong password!');
+
+    const existingUser = await this.findUserByEmail(user.email);
+
+    const encodedUser = this.encodeUserDataAsJwt(existingUser);
+
+    this.setJwtTokenToCookies(res, existingUser, expiresInOneDay);
+
+    return {
+      encodedUser,
+    };
+  }
+
   private encodeUserDataAsJwt(user: any) {
     const { password, ...userData } = user;
     return this.jwtService.sign(userData, {
@@ -89,5 +128,13 @@ export class AuthService {
       }),
       cookieOptions,
     );
+  }
+
+  private async findUserByEmail(email: string) {
+    const user = await this.userRepository.findOne({
+      where: { email },
+    });
+    if (!user) return null;
+    return user;
   }
 }
