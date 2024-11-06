@@ -90,7 +90,7 @@ export class SeederService implements OnModuleInit {
           const bay = this.bayRepository.create({
             name: bayData.name,
             occupied: bayData.occupied || false, // Default to false if not provided
-            device_id: bayData.device_id || null, // Default to null if not provided
+            deviceId: bayData.deviceId || null, // Default to null if not provided
             createdAt: new Date(),
             updatedAt: new Date(),
             floor: savedFloor, // Set the relation to the floor

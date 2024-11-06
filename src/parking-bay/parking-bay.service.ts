@@ -35,7 +35,7 @@ export class ParkingBayService {
       id: bay.id,
       name: bay.name,
       occupied: bay.occupied,
-      device_id: bay.device_id,
+      device_id: bay.deviceId,
       createdAt: bay.createdAt,
       updatedAt: bay.updatedAt,
       floorId: bay.floor.id,
