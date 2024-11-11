@@ -14,7 +14,7 @@ async function bootstrap() {
     .setVersion('1.0') // API version
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger', app, document); // The route where Swagger UI will be available
+  SwaggerModule.setup('api', app, document); // The route where Swagger UI will be available
 
   app.enableCors({
     origin: [
