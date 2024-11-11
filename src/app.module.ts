@@ -13,7 +13,6 @@ import { ParkingFloor } from './entities/parking-floor.entity';
 import { SeederService } from './seeder/seeder.service';
 import { ParkingOperatorModule } from './parking-operator/parking-operator.module';
 import { ParkingFloorModule } from './parking-floor/parking-floor.module';
-import { SeederModule } from './seeder/seeder.module.';
 import { LoggerMiddleware } from './common/middleware/logger/logger.middleware';
 import { ParkingSession } from './entities/parking-session.entity';
 import { Vehicle } from './entities/vehicle.entity';
@@ -29,6 +28,9 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { join } from 'path';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { StoreModule } from './store/store.module';
+import { Store } from './entities/store.entity';
+import { SeederModule } from './seeder/seeder.module';
 
 @Module({
   imports: [
@@ -55,6 +57,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
         Device,
         User,
         UserAuth,
+        Store,
       ],
       synchronize: true,
     }),
@@ -71,6 +74,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
     VehicleModule,
     AuthModule,
     UserModule,
+    StoreModule,
   ],
   exports: [SeederService],
   controllers: [],

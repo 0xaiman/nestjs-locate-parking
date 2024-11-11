@@ -9,7 +9,8 @@
         { "name": "Bay 3", "occupied": false, "device_id": null },
         { "name": "Bay 4", "occupied": false, "device_id": null },
         { "name": "Bay 5", "occupied": false, "device_id": null }
-      ]
+      ],
+      "stores": ["Adidas"]
     },
     {
       "name": "L1",
@@ -19,7 +20,8 @@
         { "name": "Bay 3", "occupied": false, "device_id": null },
         { "name": "Bay 4", "occupied": false, "device_id": null },
         { "name": "Bay 5", "occupied": false, "device_id": null }
-      ]
+      ],
+      "stores": ["Adidas"]
     },
     {
       "name": "L2",
@@ -29,7 +31,8 @@
         { "name": "Bay 3", "occupied": false, "device_id": null },
         { "name": "Bay 4", "occupied": false, "device_id": null },
         { "name": "Bay 5", "occupied": false, "device_id": null }
-      ]
+      ],
+      "stores": ["Family Mart"]
     },
     {
       "name": "L3",
@@ -39,7 +42,8 @@
         { "name": "Bay 3", "occupied": false, "device_id": null },
         { "name": "Bay 4", "occupied": false, "device_id": null },
         { "name": "Bay 5", "occupied": false, "device_id": null }
-      ]
+      ],
+      "stores": ["MrDiy", "Watson"]
     }
   ]
 }

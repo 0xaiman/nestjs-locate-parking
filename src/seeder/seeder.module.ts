@@ -7,6 +7,7 @@ import { ParkingFloor } from 'src/entities/parking-floor.entity';
 import { ParkingFloorModule } from 'src/parking-floor/Parking-floor.module';
 import { ParkingBay } from 'src/entities/parking-bay.entity';
 import { ParkingBayModule } from 'src/parking-bay/parking-bay.module';
+import { StoreModule } from 'src/store/store.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ParkingBayModule } from 'src/parking-bay/parking-bay.module';
     ParkingOperatorModule,
     ParkingFloorModule,
     ParkingBayModule,
+    StoreModule,
   ],
   providers: [SeederService],
   exports: [SeederService],

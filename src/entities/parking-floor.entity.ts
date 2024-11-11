@@ -8,6 +8,7 @@ import {
 import { ParkingOperators } from './parking-operator.entity';
 import { ParkingBay } from './parking-bay.entity';
 import { Device } from './device.entity';
+import { Store } from './store.entity';
 
 @Entity()
 export class ParkingFloor {
@@ -28,6 +29,9 @@ export class ParkingFloor {
 
   @OneToMany(() => ParkingBay, (parkingBay) => parkingBay.floor)
   parkingBays: ParkingBay[];
+
+  @OneToMany(() => Store, (store) => store.floor)
+  store: Store[];
 
   @OneToMany(() => Device, (device) => device.floor)
   device: Device[];

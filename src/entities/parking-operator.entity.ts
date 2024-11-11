@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { ParkingFloor } from './parking-floor.entity';
 import { ParkingBay } from './parking-bay.entity';
+import { Store } from './store.entity';
 
 @Entity()
 export class ParkingOperators {
@@ -24,4 +25,7 @@ export class ParkingOperators {
 
   @OneToMany(() => ParkingBay, (parkingBay) => parkingBay.parkingOperator)
   parkingBays: ParkingBay[];
+
+  @OneToMany(() => Store, (store) => store.parkingOperator)
+  store: Store[];
 }

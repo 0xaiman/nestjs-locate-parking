@@ -9,7 +9,8 @@
         { "name": "Bay 3", "occupied": false, "device_id": null },
         { "name": "Bay 4", "occupied": false, "device_id": null },
         { "name": "Bay 5", "occupied": false, "device_id": null }
-      ]
+      ],
+      "stores": ["MrDiy", "Watson"]
     },
     {
       "name": "L1",
@@ -19,29 +20,30 @@
         { "name": "Bay 3", "occupied": false, "device_id": null },
         { "name": "Bay 4", "occupied": false, "device_id": null },
         { "name": "Bay 5", "occupied": false, "device_id": null }
-      ]
+      ],
+      "stores": ["Family Mart"]
     },
     {
       "name": "L2",
-
       "parkingBays": [
         { "name": "Bay 1", "occupied": false, "device_id": null },
         { "name": "Bay 2", "occupied": false, "device_id": null },
         { "name": "Bay 3", "occupied": false, "device_id": null },
         { "name": "Bay 4", "occupied": false, "device_id": null },
         { "name": "Bay 5", "occupied": false, "device_id": null }
-      ]
+      ],
+      "stores": ["Guardian"]
     },
     {
       "name": "L3",
-
       "parkingBays": [
         { "name": "Bay 1", "occupied": false, "device_id": null },
         { "name": "Bay 2", "occupied": false, "device_id": null },
         { "name": "Bay 3", "occupied": false, "device_id": null },
         { "name": "Bay 4", "occupied": false, "device_id": null },
         { "name": "Bay 5", "occupied": false, "device_id": null }
-      ]
+      ],
+      "stores": ["Adidas"]
     }
   ]
 }
