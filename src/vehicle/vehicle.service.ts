@@ -1,6 +1,7 @@
 import { BadRequestException, Injectable, Post } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
+import { VehicleDto } from './dto/vehicle.dto';
 
 @Injectable()
 export class VehicleService {
@@ -22,7 +23,7 @@ export class VehicleService {
     fs.writeFileSync(filePath, buffer); // Save the image
   }
 
-  findParkedVehicle(licensePlate: string) {
+  async findParkedVehicle(licensePlate: string): Promise<VehicleDto> {
     licensePlate = licensePlate.toLowerCase();
 
     if (licensePlate !== 'abc123') {
@@ -33,14 +34,13 @@ export class VehicleService {
       this.saveBase64AsImage(this.base64Image, this.imageFileName);
     }
 
-    // Update image path to be served as a URL
-    const imageUrl = `http://localhost:3000/static/images/${this.imageFileName}`;
+    const respone = new VehicleDto();
+    respone.licensePlate = 'ABC123';
+    respone.licensePlate = 'ABC123';
+    respone.parkingBay = 'G01';
+    respone.parkingFloor = 'GROUND';
+    respone.image = `http://localhost:3000/static/images/${this.imageFileName}`;
 
-    return {
-      licensePlate: 'ABC123',
-      parkingBay: 'G01',
-      parkingFloor: 'GROUND',
-      image: imageUrl, // Path to access image via URL
-    };
+    return respone;
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Store } from 'src/entities/store.entity';
 import { Repository } from 'typeorm';
@@ -20,7 +20,7 @@ export class StoreService {
     });
 
     if (!store) {
-      throw new Error(`Store with ID ${storeId} not found`);
+      throw new NotFoundException(`Store with ID ${storeId} not found`);
     }
 
     // The store's floor information is now available
