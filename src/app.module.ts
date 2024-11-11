@@ -27,10 +27,12 @@ import { UserAuth } from './entities/user-auth.entity';
 import { UserModule } from './user/user.module';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
+import { join } from 'path';
+import { ServeStaticModule } from '@nestjs/serve-static';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({}),
+    ConfigModule.forRoot({ isGlobal: true }),
     ThrottlerModule.forRoot([
       {
         ttl: 60000, // 60 seconds,  time-to-live in mili seconds
@@ -55,6 +57,10 @@ import { APP_GUARD } from '@nestjs/core';
         UserAuth,
       ],
       synchronize: true,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'), // Serve static files from the 'public' directory
+      serveRoot: '/static', // This will make the static files accessible under the '/static' route
     }),
     ParkingBayModule,
     ParkingOperatorModule,

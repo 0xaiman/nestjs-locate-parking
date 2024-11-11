@@ -2,8 +2,9 @@ import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ParkingBay } from 'src/entities/parking-bay.entity';
 import { ParkingBayService } from './parking-bay.service';
 import { JwtGuard } from 'src/auth/guards/jwt-auth.guard';
+import { StaticTokenAuthGuard } from 'src/guards/static-token-auth/static-token-auth.guard';
 
-@UseGuards(JwtGuard)
+@UseGuards(StaticTokenAuthGuard)
 @Controller('parking-bay')
 export class ParkingBayController {
   constructor(private readonly parkingBayService: ParkingBayService) {}
