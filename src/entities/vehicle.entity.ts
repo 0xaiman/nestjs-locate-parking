@@ -1,4 +1,12 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { ParkingSession } from './parking-session.entity';
 
 @Entity()
@@ -18,12 +26,12 @@ export class Vehicle {
   @Column({ nullable: false })
   vehicleBrand: string;
 
-  @Column({ nullable: false })
+  @CreateDateColumn({ nullable: false })
   createdAt: Date;
 
-  @Column({ nullable: false })
+  @UpdateDateColumn({ nullable: false })
   updatedAt: Date;
 
-  @OneToOne(() => ParkingSession, (session) => session.vehicle)
-  session: ParkingSession;
+  @OneToMany(() => ParkingSession, (session) => session.vehicle)
+  session: ParkingSession[];
 }

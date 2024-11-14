@@ -2,6 +2,7 @@ import {
   Column,
   Entity,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -39,7 +40,7 @@ export class ParkingBay {
   )
   parkingOperator: ParkingOperators;
 
-  @OneToOne(() => ParkingSession, (session) => session.bay)
+  @OneToMany(() => ParkingSession, (session) => session.bay)
   session: ParkingSession; // Ensure this matches with ParkingSession
 
   @ManyToOne(() => Device, (device) => device.bay)

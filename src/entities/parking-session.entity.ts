@@ -1,9 +1,12 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Vehicle } from './vehicle.entity';
 import { ParkingBay } from './parking-bay.entity';
@@ -11,13 +14,13 @@ import { ParkingBay } from './parking-bay.entity';
 @Entity()
 export class ParkingSession {
   @PrimaryGeneratedColumn()
-  event_id: number;
+  id: number;
 
-  @OneToOne(() => Vehicle, (vehicle) => vehicle.session)
+  @ManyToOne(() => Vehicle, (vehicle) => vehicle.session)
   @JoinColumn()
   vehicle: Vehicle;
 
-  @OneToOne(() => ParkingBay, (bay) => bay.session)
+  @ManyToOne(() => ParkingBay, (bay) => bay.session)
   @JoinColumn()
   bay: ParkingBay; // Ensure this matches with ParkingBay
 
@@ -25,15 +28,15 @@ export class ParkingSession {
   eventTime: Date;
 
   @Column()
-  eventType: string;
+  occupied: boolean;
 
   @Column()
   duration: number; // seconds
 
-  @Column()
+  @CreateDateColumn()
   createdAt: Date;
 
-  @Column()
+  @UpdateDateColumn()
   updatedAt: Date;
 
   @Column()
